@@ -11,10 +11,7 @@ var handleDataTableRowReorder = function() {
         paging: false,
         searching:false,
         ordering:false,
-        info: false,
-                "columnDefs": [
-        { "width": "15%", "targets": 1},
-        ]
+        info: false
     });
     }
 };
