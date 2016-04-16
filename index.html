@@ -54,7 +54,7 @@
 				font-size: 0.5em !important;
 			}
 
-			#data-table{
+			.data-table{
 				word-break: break-all;
 				table-layout: fixed;
 				word-wrap: break-word;
@@ -113,7 +113,7 @@
 		<!-- ================== BEGIN BASE JS ================== -->
 		<script src="assets/plugins/pace/pace.min.js"></script>
 		<!-- ================== END BASE JS ================== -->
-
+		<script type="text/javascript" src="data.js"></script>
 	</head>
 
 	<body>
@@ -146,7 +146,7 @@
 				</section>
 
 				<!-- Example of nested vertical slides -->
-				<section data-transition="zoom">
+				<section id="simula" data-transition="zoom">
 					<section>
 						<h2>Before you start, who are <em>you</em> most likely to vote for?</h2>
 
@@ -177,76 +177,6 @@
 					</section>
 
 				</section>
-
-				<section data-transition="zoom">
-					<h2>Should the government pass the <strong>Freedom of Information</strong> Act?</h2>
-					<p>
-						<small>Drag and drop to order the results from most favourable to least</small>
-					</p>
-				</section>
-
-				<section data-transition="zoom">
-					<h5>Pass the Freedom of Information Bill?</h5>
-					<small><em> &#8593; Best Answer </em></small>
-					<table id="data-table" class="table table-striped table-bordered" width="100%">
-						<thead>
-							<tr>
-
-								<th></th>
-
-							</tr>
-						</thead>
-						<tbody>
-							<tr id="one">
-
-
-								<td class="answer">
-
-									<p><span class="yes">Yes</span>FIRST I will vigorously push for the passage of the FOI bill which the current administration has continuously refused to certify as urgent even if its passage was promised in the 2010 presidential campaign</p></td>
-
-								</tr>
-								<tr id="two">
-									<td class="answer">
-
-										<p><span class="no">No</span>SECOND I will vigorously push for the passage of the FOI bill which the current administration has continuously refused to certify as urgent even if its passage was promised in the 2010 presidential campaign</p></td>
-
-									</tr>
-									<tr id="three">
-										<td class="answer">
-
-											<p><span class="no">No</span>THIRD I will vigorously push for the passage of the FOI bill which the current administration has continuously refused to certify as urgent even if its passage was promised in the 2010 presidential campaign</p></td>
-
-										</tr>
-										<tr id="four">
-											<td class="answer">
-												<p><span class="no">No</span> FOURTH I will vigorously push for the passage of the FOI bill which the current administration has continuously refused to certify as urgent even if its passage was promised in the 2010 presidential campaign</p></td>
-
-											</tr>
-											<tr id="five">
-												<td class="answer">
-
-													<p><span class="no">No</span>FIFTH I will vigorously push for the passage of the FOI bill which the current administration has continuously refused to certify as urgent even if its passage was promised in the 2010 presidential campaign</p></td>
-												</tr>
-
-											</tbody>
-										</table>
-										<br/>
-										<small><em> &#8595; Worst Answer </em></small>
-									</section>
-
-									<section data-transition="zoom">
-										<h2>Should the government pass the <strong>Waffles</strong> Act?</h2>
-										<p>
-											<small>Drag and drop to order the results from most favourable to least</small>
-										</p>
-									</section>
-
-									<section data-transition="zoom">
-										<p>
-											PLACEHOLDER FOR ANSWERS
-										</p>
-									</section>
-
 
 									<section data-state="customevent" data-transition="zoom">
 										<h2>State Events (FOR MARV)</h2>
@@ -323,6 +253,31 @@
 			$("#voting-for a").click(function() {
     		var votingFor = $(this).attr('id');
     		saveToLocalStorage("votingFor", votingFor);
+			});
+
+			var reversedData = data.reverse();
+			$.each(reversedData, function (index, value) {
+			  var sectionHtml = "<section id='kwestyon"+ value.id +"' data-transition='zoom'>";
+			  var sectionItem = "<h2>"+ value.issue +"</h2><p><small>Drag and drop to order the results from most favourable to least</small></p>"
+			  sectionHtml += sectionItem + "</section>";
+
+			  $("section#simula").after(sectionHtml);
+
+			  var sectionAnswer = "<section id='sagot"+ value.id +"' data-transition='zoom'>";
+			  var sectionAnswerItem = "<h5>"+ value.shortname +"</h5><small><em> &#8593; Best Answer </em></small>"
+			    + "<table id='data-table"+ value.id +"' class='table table-striped table-bordered data-table' width='100%'></table><small><em> &#8595; Worst Answer </em></small>";
+			  sectionAnswer += sectionAnswerItem + "</section>";
+			  $("section#kwestyon"+ value.id).after(sectionAnswer);
+
+			  var inHTML = "<thead><tr><th></th></tr></thead>";
+			  $.each(value.answers, function(index, val){
+			    if (val.summary) {
+			      var newItem = "<tr id='"+value.id + "-" +val.candidate_id +"'><td class='answer'><p><span class='"+val.summary.toLowerCase() +"'>"+val.summary +"</span>"+ val.quote + "</p></td></tr>"
+			      inHTML += newItem;
+			    }
+			  });
+			  inHTML += "</tbody>";
+			  $("table#data-table"+ value.id).html(inHTML);
 			});
 		</script>
 		<script src="assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
