@@ -17,6 +17,9 @@
 
 	<!-- Code syntax highlighting -->
 	<link rel="stylesheet" href="reveal/lib/css/zenburn.css">
+	<!-- <link href='https://fonts.googleapis.com/css?family=Anton' rel='stylesheet' type='text/css'> -->
+	<link href='https://fonts.googleapis.com/css?family=Merriweather:400,700,900' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
 
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
@@ -128,6 +131,19 @@
 					<p>
 						<small>Created for the #BilangPilipino Hackathon</small>
 					</p>
+				</section>
+
+				<section style="margin-bottom: 50px">
+					<h2>Your Results (CJ's PAGE)</h2>
+					<p>
+						How did you stack up?
+					</p>
+					<!-- <div class="canvas-container"> -->
+					<canvas id="memecanvas" style="border:1px solid black" width="640" height="360">
+	            		Sorry, canvas not supported
+	            	</canvas>
+	            	<br>
+	            	<!-- </div> -->
 				</section>
 
 				<section>
@@ -296,10 +312,157 @@
 		<!-- ================== END PAGE LEVEL JS ================== -->
 
 		<script>
+			var canvas = document.getElementById('memecanvas');
+		    ctx = canvas.getContext('2d');
+		    var deviceWidth = window.innerWidth;;
+		    // canvasWidth = Math.min(640, deviceWidth-20);
+		    // canvasHeight = Math.min(360, deviceWidth-20);
+		    // canvas.width = canvasWidth;
+		    // canvas.height = canvasHeight;
+
+		    // bg
+		    // var img = new Image();
+		    // img.src = 'img/result_bg.png';
+		    // img.onload = function() {
+		    // // Work out where to center it
+		    // x = canvas.width/2 - img.width/2;
+		    // y = canvas.height/2 - img.height/2;
+		    // Draw it
+		    // ctx.drawImage(img, x, y);
+		    // }
+
+		    function loadImages(sources, callback) {
+		        var images = {};
+		        var loadedImages = 0;
+		        var numImages = 0;
+		        // get num of sources
+		        for(var src in sources) {
+		          numImages++;
+		        }
+		        for(var src in sources) {
+		          images[src] = new Image();
+		          images[src].onload = function() {
+		            if(++loadedImages >= numImages) {
+		              callback(images);
+		            }
+		          };
+		          images[src].src = sources[src];
+		        }
+		      }
+
+		    var sources = {
+		    	bg: 'img/result_bg.jpg',
+		        topCandidate: 'img/santiago.png',
+		        chosenCandidate: 'img/duterte.png'
+		     };
+
+		     loadImages(sources, function(images) {
+		     	var img = images.bg;
+		     	x = canvas.width/2 - img.width/2;
+		     	y = canvas.height/2 - img.height/2;
+		        ctx.drawImage(images.bg, 0, 0, images.bg.width, images.bg.height,    // source rectangle
+                			0, 0, canvas.width, canvas.height);
+
+		        /**
+		        * Insert Top Blind Candidate stats
+		  		*/
+		        img = images.topCandidate;
+		        imgSize = 200;
+		     	x = 50;
+		     	y = (canvas.height - imgSize) / 2;
+		     	ctx.lineWidth  = 15;
+	            ctx.strokeStyle = 'white';
+	            ctx.arc(imgSize -50, imgSize + 10, 100, 0, 2 * Math.PI, false);
+				ctx.stroke();
+				ctx.closePath();
+		        ctx.drawImage(images.topCandidate, x, y + 30, imgSize, imgSize);
+
+		        // text attributes
+		        ctx.lineWidth  = 5;
+	            ctx.strokeStyle = '#4f3928';
+	            ctx.fillStyle = '#FAF8A1';
+	            ctx.shadowColor= '#4f3928';
+	            ctx.shadowOffsetX="2";
+	            ctx.shadowOffsetY="2";
+				ctx.font = '10pt Lato'
+
+				// on top of image
+				topTextPosX = x;
+				topTextPosY = imgSize/2 - (16 * 2.5);
+
+				// beside image
+				// topTextPosX = x + imgSize + 10;
+				// topTextPosY = y + imgSize/2;
+
+				// Insert Text Stats
+				var topTextTitle = 'Your Top Blind Match is';
+				ctx.fillText(topTextTitle, topTextPosX, topTextPosY);
+
+				var topTextOffset = 16 *2;
+				ctx.font = 'normal bold 16pt Merriweather';
+				var topCandidateName = 'Miriam Santiago';
+				ctx.fillText(topCandidateName, topTextPosX, topTextPosY + topTextOffset);
+
+				// topTextOffset += 18
+				var metrics = ctx.measureText(topCandidateName);
+				ctx.font = 'normal bold 16pt Merriweather'
+				// console.log("metrics", metrics);
+				var topCandidatePercentage = '98%';
+	            ctx.fillText(topCandidatePercentage, topTextPosX + metrics.width + 15, topTextPosY + topTextOffset);
+
+	            /**
+		        * Insert Chosen Candidate stats
+		  		*/
+		  		ctx.shadowOffsetX="0";
+	            ctx.shadowOffsetY="0";
+		  		img = images.chosenCandidate;
+		        imgSize = 200;
+		     	x = canvas.width - imgSize - 50;
+		     	y = (canvas.height - imgSize) / 2;
+
+		        ctx.lineWidth  = 15;
+	            ctx.strokeStyle = 'white';
+	            ctx.beginPath();
+	            ctx.arc(x + 100, imgSize + 10, 100, 0, 2 * Math.PI, false);
+				ctx.stroke();
+
+				ctx.drawImage(images.chosenCandidate, x, y + 30, imgSize, imgSize);
+
+		        ctx.lineWidth  = 5;
+	            ctx.strokeStyle = '#F4D1B1';
+	            ctx.fillStyle = '#A13679';
+	            ctx.shadowColor="#F4D1B1";
+	            ctx.shadowOffsetX="2";
+	            ctx.shadowOffsetY="2";
+				ctx.font = '10pt Lato'
+
+				// on top of image
+				topTextPosX = x;
+				topTextPosY = imgSize/2 - (16 * 2.5);
+
+				// beside image
+				// topTextPosX = x + imgSize + 10;
+				// topTextPosY = y + imgSize/2;
+
+				topTextTitle = 'Compatibility with Chosen Candidate';
+				ctx.fillText(topTextTitle, topTextPosX, topTextPosY);
+
+				topTextOffset = 16 *2;
+				ctx.font = 'normal bold 16pt Merriweather';
+				topCandidateName = 'Rodrigo Duterte';
+				ctx.fillText(topCandidateName, topTextPosX, topTextPosY + topTextOffset);
+
+				// topTextOffset += 18
+				var metrics = ctx.measureText(topCandidateName);
+				ctx.font = 'normal bold 16pt Merriweather';
+				// console.log("metrics", metrics);
+	            ctx.fillText('50%', topTextPosX + metrics.width + 15, topTextPosY + topTextOffset);
+		      });
+
 			$(document).ready(function() {
 				TableManageRowReorder.init();
 			});
-		</script>
+			</script>
 
 	</body>
 	</html>
