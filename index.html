@@ -21,163 +21,216 @@
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
-	</head>
 
-	<body>
+		<style type="text/css">
 
-		<div class="reveal">
 
-			<!-- Any section element inside of this container is displayed as a slide -->
-			<div class="slides">
-				<section>
-					<h1><strong>Blind</strong> Selekyson</h1>
-					<h3>Who would you vote for president if personalities weren't the issue?</h3>
-					<p>
-						<small>Created for the #BilangPilipino Hacksyon Challenge</small>
-					</p>
-				</section>
+			.question,.answer {
+				font-size: 1em;
+				word-break: break-all;
+				word-wrap: break-word;
+			}
 
-				<section>
-					<h3>Elections are often swayed by <strong>cults of personality</strong> where decisions are <em>skewed</em> by our perceptions.</h3>
-					<p>
-						What if you could vote based on a candidate's position and NOT their branding? 
-					</p>
-					<p>
-						<small>
-							To better hide their identities, we've converted all their statements to English so you can't figure out who said what.
-						</small>
-						<br/>
-						
-						
-					</p>
-				</section>
+			table.dataTable tbody th, table.dataTable tbody td {
+				border-bottom-width: 0;
+				word-wrap: break-word;
+				white-space: pre-wrap;
+				word-break: break-all;
+			}
 
-				<!-- Example of nested vertical slides -->
-				<section data-transition="zoom">
+			.reveal table th, .reveal table td{
+				word-break: break-all !important;
+				font-size: 0.6em !important;
+			}
+
+			#data-table{
+				word-break: break-all;
+				table-layout: fixed;
+				word-wrap: break-word;
+				margin: 0 auto;
+				clear: both;
+				width: 100%;
+				table-layout: fixed;
+			}
+
+			.answer > span {
+				word-wrap: break-word;
+				white-space: pre-wrap;
+				word-break: keep-all;
+
+			</style>
+
+			<!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
+			<link href="assets/plugins/DataTables/media/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+			<link href="assets/plugins/DataTables/extensions/RowReorder/css/rowReorder.bootstrap.min.css" rel="stylesheet" />
+			<link href="assets/plugins/DataTables/extensions/Responsive/css/responsive.bootstrap.min.css" rel="stylesheet" />
+			<!-- ================== END PAGE LEVEL STYLE ================== -->
+
+			<!-- ================== BEGIN BASE JS ================== -->
+			<script src="assets/plugins/pace/pace.min.js"></script>
+			<!-- ================== END BASE JS ================== -->
+
+		</head>
+
+		<body>
+
+			<div class="reveal">
+
+				<!-- Any section element inside of this container is displayed as a slide -->
+				<div class="slides">
 					<section>
-						<h2>Before taking our test, who are <em>you</em> most likely to vote for?</h2>
-
-						<table>
-							<tr>
-								<td>
-									<a id="binay" href="#/3"><img src="img/01.jpg" /></a>
-								</td>
-								<td>
-									<a id="santiago" href="#/3"><img src="img/02.jpg" /></a>
-								</td>
-								<td>
-									<a id="duterte" href="#/3"><img src="img/03.jpg" /></a>
-								</td>
-								<td>
-									<a id="poe" href="#/3"><img src="img/04.jpg" /></a>
-								</td>
-								<td>
-									<a id="roxas" href="#/3"><img src="img/05.jpg" /></a>
-								</td>
-							</tr>
-						</table>
-						<br>
+						<h1><strong>Blind</strong> Selekyson</h1>
+						<h3>Who would you vote for president if personalities weren't the issue?</h3>
 						<p>
-							<small>This won't factor in computing your results in any way.</small>
+							<small>Created for the #BilangPilipino Hacksyon Challenge</small>
 						</p>
-						
 					</section>
-					
+
+					<section>
+						<h3>Elections are often swayed by <strong>cults of personality</strong> where decisions are <em>skewed</em> by our perceptions.</h3>
+						<p>
+							What if you could vote based on a candidate's position and NOT their branding? 
+						</p>
+						<p>
+							<small>
+								To better hide their identities, we've converted all their statements to English so you can't figure out who said what.
+							</small>
+							<br/>
+
+
+						</p>
+					</section>
+
+					<!-- Example of nested vertical slides -->
+					<section data-transition="zoom">
+						<section>
+							<h2>Before taking our test, who are <em>you</em> most likely to vote for?</h2>
+
+							<table>
+								<tr>
+									<td>
+										<a id="binay" href="#/3"><img src="img/01.jpg" /></a>
+									</td>
+									<td>
+										<a id="santiago" href="#/3"><img src="img/02.jpg" /></a>
+									</td>
+									<td>
+										<a id="duterte" href="#/3"><img src="img/03.jpg" /></a>
+									</td>
+									<td>
+										<a id="poe" href="#/3"><img src="img/04.jpg" /></a>
+									</td>
+									<td>
+										<a id="roxas" href="#/3"><img src="img/05.jpg" /></a>
+									</td>
+								</tr>
+							</table>
+							<br>
+							<p>
+								<small>This won't factor in computing your results in any way.</small>
+							</p>
+
+						</section>
+
+					</section>
+
+					<section data-transition="zoom">
+						<h2>Should the government pass the <strong>Freedom of Information</strong> Act?</h2>
+						<p>
+							<small>Drag and drop to order the results from most favourable to least</small>
+						</p>
+					</section>
+
+					<section data-transition="zoom">
+					<h5>Freedom of Information Bill</h5>
+						<em> &#8593; Best Answer </em>
+						<p>
+
+							<table id="data-table" class="table table-striped table-bordered nowrap" width="100%">
+								<thead>
+									<tr>
+										<th>Answer</th>
+										<th>Quote</th>
+
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td class="question">Yes</td>
+										<td class="answer"><span>I will vigorously push for the passage of the FOI bill which the current administration has continuously refused to certify as urgent even if its passage was promised in the 2010 presidential campaign</span></td>
+
+									</tr>
+									<tr>
+										<td class="question">No</td>
+										<td class="answer"><span>I will vigorously push for the passage of the FOI bill which the current administration has continuously refused to certify as urgent even if its passage was promised in the 2010 presidential campaign</span></td>
+
+									</tr>
+									<tr>
+										<td class="question">No</td>
+										<td class="answer"><span>I will vigorously push for the passage of the FOI bill which the current administration has continuously refused to certify as urgent even if its passage was promised in the 2010 presidential campaign</span></td>
+
+									</tr>
+									<tr>
+										<td class="question">Yes</td>
+										<td class="answer"><span>I will vigorously push for the passage of the FOI bill which the current administration has continuously refused to certify as urgent even if its passage was promised in the 2010 presidential campaign</span></td>
+									</tr>
+
+								</tbody>
+							</table>
+
+						</p>
+						<em> &#8595; Worst Answer </em>
+					</section>
+
+					<section data-transition="zoom">
+						<h2>Should the government pass the <strong>Waffles</strong> Act?</h2>
+						<p>
+							<small>Drag and drop to order the results from most favourable to least</small>
+						</p>
+					</section>
+
+					<section data-transition="zoom">
+						<p>
+							PLACEHOLDER FOR ANSWERS
+						</p>
+					</section>
+
+
+					<section data-state="customevent" data-transition="zoom">
+						<h2>State Events (FOR MARV)</h2>
+						<p>
+							Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
+						</p>
+						<pre><code class="javascript" data-trim contenteditable style="font-size: 18px;">
+							Reveal.addEventListener( 'customevent', function() {
+							console.log( '"customevent" has fired' );
+						} );
+					</code></pre>
 				</section>
 
-				<section data-transition="zoom">
-					<h2>Should the government pass the <strong>Freedom of Information</strong> Act?</h2>
+				<section>
+					<h2>Your Results (CJ's PAGE)</h2>
 					<p>
-						<small>Drag and drop to order the results from most favourable to least</small>
+						How did you stack up?
 					</p>
 				</section>
 
-				<section data-transition="zoom">
+
+				<section style="text-align: left;">
+					<h1>THE END</h1>
 					<p>
-						 <table id="data-table" class="table table-striped table-bordered nowrap" width="100%">
-                                <thead>
-                                    <tr>
-                                        <th>Answer</th>
-                                        <th>Quote</th>
-                                       
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Yes</td>
-                                        <td>Freeeeeee</td>
-                                       
-                                    </tr>
-                                     <tr>
-                                        <td>No</td>
-                                        <td>Of</td>
-                                       
-                                    </tr>
-                                     <tr>
-                                        <td>No</td>
-                                        <td>Information</td>
-                                       
-                                    </tr>
-                                     <tr>
-                                        <td>Yes</td>
-                                        <td>Act</td>
-                                       
-                                    </tr>
-                                 
-                                </tbody>
-                            </table>
+
 					</p>
 				</section>
 
-				<section data-transition="zoom">
-					<h2>Should the government pass the <strong>Waffles</strong> Act?</h2>
-					<p>
-						<small>Drag and drop to order the results from most favourable to least</small>
-					</p>
-				</section>
-
-				<section data-transition="zoom">
-					<p>
-						PLACEHOLDER FOR ANSWERS
-					</p>
-				</section>
-
-
-				<section data-state="customevent" data-transition="zoom">
-					<h2>State Events (FOR MARV)</h2>
-					<p>
-						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
-					</p>
-					<pre><code class="javascript" data-trim contenteditable style="font-size: 18px;">
-						Reveal.addEventListener( 'customevent', function() {
-						console.log( '"customevent" has fired' );
-					} );
-				</code></pre>
-			</section>
-
-			<section>
-				<h2>Your Results (CJ's PAGE)</h2>
-				<p>
-					How did you stack up?
-				</p>
-			</section>
-
-
-			<section style="text-align: left;">
-				<h1>THE END</h1>
-				<p>
-
-				</p>
-			</section>
+			</div>
 
 		</div>
 
-	</div>
+		<script src="reveal/lib/js/head.min.js"></script>
+		<script src="reveal/js/reveal.js"></script>
 
-	<script src="reveal/lib/js/head.min.js"></script>
-	<script src="reveal/js/reveal.js"></script>
-
-	<script>
+		<script>
 
 			// Full list of configuration options available at:
 			// https://github.com/hakimel/reveal.js#configuration
@@ -191,13 +244,21 @@
 
 				// Optional reveal.js plugins
 				dependencies: [
-				{ src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-				{ src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-				{ src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-				{ src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-				{ src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
-				{ src: 'reveal.js/plugin/notes/notes.js', async: true }
+				{ src: 'reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+				{ src: 'reveal/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+				{ src: 'reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+				{ src: 'reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+				{ src: 'reveal/plugin/zoom-js/zoom.js', async: true },
+				{ src: 'reveal/plugin/notes/notes.js', async: true }
 				]
+			});
+
+			$('#data-table tbody td').each(function(index){
+				$this = $(this);
+				var titleVal = $this.text();
+				if (typeof titleVal === "string" && titleVal !== '') {
+					$this.attr('title', titleVal);
+				}
 			});
 
 		</script>
@@ -208,7 +269,7 @@
 		<script src="assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
 		<script src="assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
 		<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-	<!--[if lt IE 9]>
+		<!--[if lt IE 9]>
 		<script src="assets/crossbrowserjs/html5shiv.js"></script>
 		<script src="assets/crossbrowserjs/respond.min.js"></script>
 		<script src="assets/crossbrowserjs/excanvas.min.js"></script>
