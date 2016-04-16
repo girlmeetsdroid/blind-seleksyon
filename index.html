@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Blind Seleksyon</title>
+
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+	<link rel="stylesheet" href="reveal.js/css/reveal.css">
+	<link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
+
+	<!-- Code syntax highlighting -->
+	<link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement( 'link' );
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName( 'head' )[0].appendChild( link );
+	</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1><strong>Blind</strong> Selekyson</h1>
+					<h3>Who would you vote for president if personalities weren't the issue?</h3>
+					<p>
+						<small>Created for the #BilangPilipino Hacksyon Challenge</small>
+					</p>
+				</section>
+
+				<section>
+					<h3>Elections are often swayed by <strong>cults of personality</strong> where decisions are <em>skewed</em> by our perceptions.</h3>
+					<p>
+						What if you could vote based on a candidate's position and NOT their branding? 
+					</p>
+					<p>
+						<small>
+						To better hide their identities, we've converted all their statements to English so you can't figure out who said what.
+						</small>
+						<br/>
+						
+						
+					</p>
+				</section>
+
+				<!-- Example of nested vertical slides -->
+				<section>
+					<section>
+						<h2>Before taking our test, who are <em>you</em> most likely to vote for?</h2>
+					
+								<table>
+								<tr>
+								<td>
+								<a id="binay" href="#/3"><img src="img/01.jpg" /></a>
+								</td>
+								<td>
+								<a id="santiago" href="#/3"><img src="img/02.jpg" /></a>
+								</td>
+								<td>
+								<a id="duterte" href="#/3"><img src="img/03.jpg" /></a>
+								</td>
+								<td>
+								<a id="poe" href="#/3"><img src="img/04.jpg" /></a>
+								</td>
+								<td>
+								<a id="roxas" href="#/3"><img src="img/05.jpg" /></a>
+								</td>
+								</tr>
+								</table>
+						<br>
+						<p>
+						<small>This won't factor in computing your results in any way.</small>
+						</p>
+						
+					</section>
+					
+				</section>
+
+				<section>
+					<h2>Should the government pass the <strong>Freedom of Information</strong> Act?</h2>
+					<p>
+					<small>Drag and drop to order the results from most favourable to least</small>
+					</p>
+				</section>
+
+				<section>
+					<p>
+							PLACEHOLDER FOR ANSWERS
+					</p>
+				</section>
+
+
+<section data-state="customevent">
+	<h2>State Events (FOR MARV)</h2>
+	<p>
+		Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
+	</p>
+	<pre><code class="javascript" data-trim contenteditable style="font-size: 18px;">
+		Reveal.addEventListener( 'customevent', function() {
+		console.log( '"customevent" has fired' );
+	} );
+</code></pre>
+</section>
+
+<section>
+	<h2>Your Results (CJ's PAGE)</h2>
+	<p>
+		How did you stack up?
+	</p>
+</section>
+
+
+<section style="text-align: left;">
+	<h1>THE END</h1>
+	<p>
+		
+	</p>
+</section>
+
+</div>
+
+</div>
+
+<script src="reveal.js/lib/js/head.min.js"></script>
+<script src="reveal.js/js/reveal.js"></script>
+
+<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+				{ src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+				{ src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+				{ src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+				{ src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+				{ src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+				{ src: 'reveal.js/plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+	</html>
