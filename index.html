@@ -96,7 +96,7 @@
 				-ms-user-select: none;       /* IE/Edge */
 			}
 
-			.answer  > p::first-letter { 
+			.answer  > p::first-letter {
 				font-size: 160%;
 				color: #569492;
 				font-family: serif;
@@ -150,7 +150,7 @@
 					<section>
 						<h2>Before you start, who are <em>you</em> most likely to vote for?</h2>
 
-						<table>
+						<table id="voting-for">
 							<tr>
 								<td>
 									<a id="binay" href="#/3"><img src="img/01.jpg" /></a>
@@ -201,19 +201,19 @@
 
 
 								<td class="answer">
-									
+
 									<p><span class="yes">Yes</span>FIRST I will vigorously push for the passage of the FOI bill which the current administration has continuously refused to certify as urgent even if its passage was promised in the 2010 presidential campaign</p></td>
 
 								</tr>
 								<tr id="two">
 									<td class="answer">
-										
+
 										<p><span class="no">No</span>SECOND I will vigorously push for the passage of the FOI bill which the current administration has continuously refused to certify as urgent even if its passage was promised in the 2010 presidential campaign</p></td>
 
 									</tr>
 									<tr id="three">
 										<td class="answer">
-											
+
 											<p><span class="no">No</span>THIRD I will vigorously push for the passage of the FOI bill which the current administration has continuously refused to certify as urgent even if its passage was promised in the 2010 presidential campaign</p></td>
 
 										</tr>
@@ -224,7 +224,7 @@
 											</tr>
 											<tr id="five">
 												<td class="answer">
-													
+
 													<p><span class="no">No</span>FIFTH I will vigorously push for the passage of the FOI bill which the current administration has continuously refused to certify as urgent even if its passage was promised in the 2010 presidential campaign</p></td>
 												</tr>
 
@@ -305,12 +305,26 @@
 				]
 			});
 
+			function saveToLocalStorage (key, value) {
+				window.localStorage.setItem(key, value);
+			}
+
+			function getUserVotingFor (key) {
+				alert(window.localStorage[key]);
+			}
+
 		</script>
 
 
 		<!-- ================== BEGIN BASE JS ================== -->
 		<script src="assets/plugins/jquery/jquery-1.9.1.min.js"></script>
 		<script src="assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
+		<script type="text/javascript">
+			$("#voting-for a").click(function() {
+    		var votingFor = $(this).attr('id');
+    		saveToLocalStorage("votingFor", votingFor);
+			});
+		</script>
 		<script src="assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
 		<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 		<!--[if lt IE 9]>
