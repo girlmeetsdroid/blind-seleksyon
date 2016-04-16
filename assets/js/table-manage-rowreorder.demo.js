@@ -3,15 +3,19 @@ var handleDataTableRowReorder = function() {
 
     if ($('#data-table').length !== 0) {
         $('#data-table').DataTable({
-            rowReorder: true,
-            paging: false,
-            searching:false,
-            info: false,
-            ordering:false,
-            "columnDefs": [
-            { "width": "10%", "targets": 0 }
-            ]
-        });
+         rowReorder: {
+            selector: ':last-child',
+            snapX: 10
+
+        },
+        paging: false,
+        searching:false,
+        ordering:false,
+        info: false,
+                "columnDefs": [
+        { "width": "15%", "targets": 1},
+        ]
+    });
     }
 };
 
