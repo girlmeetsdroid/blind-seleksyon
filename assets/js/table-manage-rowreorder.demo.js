@@ -5,7 +5,9 @@ var handleDataTableRowReorder = function() {
         $('#data-table').DataTable({
             responsive: true,
             rowReorder: true,
-            paging: false
+            paging: false,
+            searching:false,
+            select.info:false
         });
     }
 };
