@@ -490,13 +490,9 @@
 					var metrics = ctx.measureText(topCandidateName);
 					ctx.font = 'normal bold 16pt Merriweather'
 					// console.log("metrics", metrics);
-<<<<<<< HEAD
-					var topCandidatePercentage = '98%';
-					ctx.fillText(topCandidatePercentage, topTextPosX + metrics.width + 15, topTextPosY + topTextOffset);
-=======
+
 					var topCandidatePercentage = topCandidate.compatibility;
 		            ctx.fillText(topCandidatePercentage, topTextPosX + metrics.width + 15, topTextPosY + topTextOffset);
->>>>>>> d8e9744055c8c56de886a6857cc7128185c99a2a
 
 		            /**
 			        * Insert Chosen Candidate stats
