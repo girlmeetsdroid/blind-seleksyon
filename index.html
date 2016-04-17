@@ -259,6 +259,20 @@
 		<script src="assets/plugins/jquery/jquery-1.9.1.min.js"></script>
 		<script src="assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
 		<script type="text/javascript">
+			var candidateScores = {
+				1: parseInt(0),
+				2: parseInt(0),
+				3: parseInt(0),
+				4: parseInt(0),
+				5: parseInt(0)
+			}
+			var scoreMapping = {
+				1: 5,
+				2:4,
+				3: 3,
+				4:2,
+				5:1
+			}
 			$("#voting-for a").click(function() {
 				var votingFor = $(this).attr('id');
 				saveToLocalStorage("votingFor", votingFor);
@@ -290,6 +304,36 @@
 				});
 				inHTML += "</tbody>";
 				$("table#data-table"+ value.id).html(inHTML);
+				Reveal.addEventListener( 'slidechanged', function( event ) {
+					var tempMap = {
+						1:21,
+						2:20,
+						3:19,
+						4:18,
+						5:17,
+						6:16,
+						7:15,
+						8:14,
+						9:13,
+						10:12,
+						11:11,
+						12:10,
+						13:9,14:8,15:7,16:6,17:5,
+						18:4, 19:3, 20:2,21:1
+					}
+					var curSlide = 'kwestyon'+ (parseInt(tempMap[value.id])+1);
+					var prevSlide = 'sagot'+ tempMap[value.id];
+					if (event.previousSlide.id.toString() === prevSlide.toString()  && event.currentSlide.id.toString() === curSlide.toString()) {
+						var scoreIndex = 1;
+						$('#data-table'+tempMap[value.id] + ' td:nth-child(2)').each(function () {
+							if (scoreIndex > 5) scoreIndex = 1;
+							var theIndex = parseInt($(this).html());
+							candidateScores[theIndex] += parseInt(scoreMapping[scoreIndex]);
+							scoreIndex++;
+						});
+					}
+						// event.previousSlide, event.currentSlide, event.indexh, event.indexv
+				});
 			});
 		</script>
 		<script src="assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
@@ -476,6 +520,7 @@
 			}
 
 			Reveal.addEventListener( 'resultEvent', function() {
+				console.log(candidateScores);
 				loadResultPhoto();
 			} );
 
