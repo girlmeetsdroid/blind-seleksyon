@@ -374,8 +374,10 @@
 			     	var img = images.bg;
 			     	x = canvas.width/2 - img.width/2;
 			     	y = canvas.height/2 - img.height/2;
+			    	ctx.beginPath();
 			        ctx.drawImage(images.bg, 0, 0, images.bg.width, images.bg.height,    // source rectangle
 	                			0, 0, canvas.width, canvas.height);
+			        ctx.closePath();
 
 			        /**
 			        * Insert Top Blind Candidate stats
@@ -386,6 +388,7 @@
 			     	y = (canvas.height - imgSize) / 2;
 			     	ctx.lineWidth  = 15;
 		            ctx.strokeStyle = 'white';
+		            ctx.beginPath();
 		            ctx.arc(imgSize -50, imgSize + 10, 100, 0, 2 * Math.PI, false);
 					ctx.stroke();
 					ctx.closePath();
@@ -439,7 +442,7 @@
 		            ctx.beginPath();
 		            ctx.arc(x + 100, imgSize + 10, 100, 0, 2 * Math.PI, false);
 					ctx.stroke();
-
+					ctx.closePath();
 					ctx.drawImage(images.chosenCandidate, x, y + 30, imgSize, imgSize);
 
 			        ctx.lineWidth  = 5;
