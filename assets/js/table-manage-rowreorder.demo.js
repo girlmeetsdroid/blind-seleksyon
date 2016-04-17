@@ -7,7 +7,7 @@ var handleDataTableRowReorder = function() {
     var count = $(".data-table tbody tr").length-1;
     $(".data-table tbody tr").each(function(i, tr) {
         $(tr).attr('id', 'id'+i);
-        $(tr).prepend('<td>'+parseInt(i+1)+'</td>');
+        $(tr).prepend('<td>'+parseInt(((i+1)%5)+1)+'</td>');
 
         if (i==count) {
             var table = $('.data-table').DataTable({
