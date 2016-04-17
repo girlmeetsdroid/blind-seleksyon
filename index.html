@@ -17,10 +17,7 @@
 
 	<!-- Code syntax highlighting -->
 	<link rel="stylesheet" href="reveal/lib/css/zenburn.css">
-	<!-- <link href='https://fonts.googleapis.com/css?family=Anton' rel='stylesheet' type='text/css'> -->
 	<link href='https://fonts.googleapis.com/css?family=Merriweather:400,700,900' rel='stylesheet' type='text/css'>
-	<link href='https://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
-
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
@@ -67,7 +64,7 @@
 				table-layout: fixed;
 			}
 
-			span.yes, span.no {
+			span.yes, span.no, span.no-clear-stand {
 				float:left;
 				padding:10px;
 				margin-right: 10px;
@@ -144,9 +141,6 @@
 						This is a poll application that aims help you make better decisions by masking out potential biases.
 					</p>
 					<p>
-						<small>
-							To better hide their identities, we've converted all their statements to English so you can't figure out who said what.
-						</small>
 						<br/>
 
 
@@ -277,7 +271,7 @@
 				sectionAnswer += sectionAnswerItem + "</section>";
 				$("section#kwestyon"+ value.id).after(sectionAnswer);
 
-				var inHTML = "<thead><tr><th></th></tr></thead>";
+				var inHTML = "<thead><tr>Order<th></th></tr></thead>";
 				$.each(value.answers, function(index, val){
 					if (val.summary) {
 						var newItem = "<tr id='"+value.id + "-" +val.candidate_id +"'><td class='answer'><p><span class='"+val.summary.toLowerCase() +"'>"+val.summary +"</span>"+ val.quote + "</p></td></tr>"
@@ -307,8 +301,8 @@
 			$(document).ready(function() {
 				TableManageRowReorder.init();
 			});
-			
-			
+
+
 			var canvas = document.getElementById('memecanvas');
 			ctx = canvas.getContext('2d');
 			var deviceWidth = window.innerWidth;;
