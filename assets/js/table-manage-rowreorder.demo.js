@@ -25,9 +25,10 @@ var handleDataTableRowReorder = function() {
           {
             "targets": [0,1],
             "visible": true
-    		});
-        }
-    });
+    			}]
+        	});
+    		}
+	});
 
 
 };
@@ -41,30 +42,3 @@ var TableManageRowReorder = function () {
         }
     };
 }();
-
-
-<<<<<<< HEAD
-=======
-$(document).ready(function() {
-  var count = $("#example tbody tr").length-1;
-  $("#example tbody tr").each(function(i, tr) {
-    $(tr).attr('id', 'id'+i);
-    $(tr).prepend('<td>'+parseInt(i+1)+'</td>');
-    if (i==count) {
-        var table = $('#example').DataTable({
-         rowReorder: {
-          snapX: 10,
-          selector: 'tr',
-          dataSrc: 0
-      },
-      paging: false,
-      searching:false,
-      info: false,
-      scrollY: "600px",
-      scrollCollapse: true,
-  });
-    }
-});
-
-} );
->>>>>>> Lol
