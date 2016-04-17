@@ -8,17 +8,23 @@ var handleDataTableRowReorder = function() {
         $(tr).prepend('<td>'+parseInt(i+1)+'</td>');    
         if (i==count) {
             var table = $('.data-table').DataTable({
-               rowReorder: {
-                  snapX: 10,
-                  selector: 'tr',
-                  dataSrc: 0
-              },
-              paging: false,
-              searching:false,
-              info: false,
-              scrollY: "600px",
-              scrollCollapse: true,
-          });
+             rowReorder: {
+              snapX: 10,
+              selector: 'tr',
+              dataSrc: 0
+          },
+          paging: false,
+          searching:false,
+          info: false,
+          scrollY: "600px",
+          scrollCollapse: true,
+          "columnDefs": [
+          {
+            "targets": [0,1],
+            "visible": false
+        }
+        ]
+    });
         }     
     });  
 
@@ -43,17 +49,17 @@ $(document).ready(function() {
     $(tr).prepend('<td>'+parseInt(i+1)+'</td>');    
     if (i==count) {
         var table = $('#example').DataTable({
-           rowReorder: {
-              snapX: 10,
-              selector: 'tr',
-              dataSrc: 0
-          },
-          paging: false,
-          searching:false,
-          info: false,
-          scrollY: "600px",
-          scrollCollapse: true,
-      });
+         rowReorder: {
+          snapX: 10,
+          selector: 'tr',
+          dataSrc: 0
+      },
+      paging: false,
+      searching:false,
+      info: false,
+      scrollY: "600px",
+      scrollCollapse: true,
+  });
     }     
 });  
 
