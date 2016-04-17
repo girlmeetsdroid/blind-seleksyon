@@ -12,7 +12,7 @@ var handleDataTableRowReorder = function() {
         searching:false,
         ordering:false,
         info: false,
-        scrollY: "500px",
+        scrollY: "400px",
         scrollCollapse: true,
     });
     }
