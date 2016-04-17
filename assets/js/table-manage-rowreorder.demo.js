@@ -1,6 +1,7 @@
 var handleDataTableRowReorder = function() {
 	"use strict";
-
+  $("thead").hide();
+   $("tfoot").hide();
 
     var count = $(".data-table tbody tr").length-1;
     $(".data-table tbody tr").each(function(i, tr) {
@@ -42,25 +43,3 @@ var TableManageRowReorder = function () {
 }();
 
 
-$(document).ready(function() {
-  var count = $("#example tbody tr").length-1;
-  $("#example tbody tr").each(function(i, tr) {
-    $(tr).attr('id', 'id'+i);
-    $(tr).prepend('<td>'+parseInt(i+1)+'</td>');    
-    if (i==count) {
-        var table = $('#example').DataTable({
-         rowReorder: {
-          snapX: 10,
-          selector: 'tr',
-          dataSrc: 0
-      },
-      paging: false,
-      searching:false,
-      info: false,
-      scrollY: "600px",
-      scrollCollapse: true,
-  });
-    }     
-});  
-
-} );
