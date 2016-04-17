@@ -1,8 +1,8 @@
 var handleDataTableRowReorder = function() {
 	"use strict";
 
-    if ($('#data-table').length !== 0) {
-        $('#data-table').DataTable({
+    if ($('.data-table').length !== 0) {
+        $('.data-table').DataTable({
            rowReorder: {
             selector: ':last-child',
             snapX: 10
