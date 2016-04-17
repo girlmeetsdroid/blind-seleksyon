@@ -288,3 +288,107 @@ body {
   -webkit-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
   -moz-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
   transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985); }
+
+/******
+*
+*******/
+table.dataTable tbody tr, table.dataTable tbody tr {
+  background-color: rgba(255, 255, 255, 0.4) !important;
+}
+
+table.dataTable tbody tr:hover, table.dataTable tbody tr:hover {
+  background-color: rgba(86, 148, 146, 0.2) !important;
+}
+
+tr {
+  margin: 5px 0px 5px 0px;
+}
+
+
+.question,.answer {
+  font-size: 1em;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+
+table.dataTable tbody th, table.dataTable tbody td {
+  border-bottom-width: 0;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.reveal table th, .reveal table td{
+  word-break: break-all !important;
+  font-size: 0.5em !important;
+}
+
+.data-table{
+  word-break: break-all;
+  table-layout: fixed;
+  word-wrap: break-word;
+  margin: 0 auto;
+  clear: both;
+  width: 100%;
+  table-layout: fixed;
+}
+
+span.yes, span.no, span.no-clear-stand {
+  float:left;
+  padding:10px;
+  margin-right: 10px;
+  color: #13140F;
+}
+
+span.no {
+  background-color: #F23C55;
+  color:#fff;
+}
+
+span.yes {
+  background-color: #D4FF00;
+}
+
+.answer > p {
+  margin:0;
+  padding:6px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  word-wrap: break-word;
+  word-break: keep-all;
+  cursor: move;
+  display: block;
+  -webkit-touch-callout: none; /* iOS Safari
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* IE/Edge */
+}
+
+.answer  > p::first-letter {
+  font-size: 160%;
+  color: #569492;
+  font-family: serif;
+}
+
+.showResultButton {
+  background-color:#44c767;
+  -moz-border-radius:28px;
+  -webkit-border-radius:28px;
+  border-radius:28px;
+  border:1px solid #18ab29;
+  display:inline-block;
+  cursor:pointer;
+  color:#ffffff;
+  font-family:Arial;
+  font-size:21px;
+  padding:16px 31px;
+  text-decoration:none;
+  text-shadow:0px 1px 0px #2f6627;
+}
+.showResultButton:hover {
+  background-color:#5cbf2a;
+}
+.showResultButton:active {
+  position:relative;
+  top:1px;
+}

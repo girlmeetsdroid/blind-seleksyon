@@ -22,6 +22,7 @@
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
 
+<<<<<<< HEAD
 		<style type="text/css">
 
 			.hide {
@@ -108,6 +109,8 @@
 
 		</style>
 
+=======
+>>>>>>> d8e9744055c8c56de886a6857cc7128185c99a2a
 		<!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
 		<link href="assets/plugins/DataTables2/datatables.css" rel="stylesheet" />
 		<link href="assets/plugins/DataTables2/DataTables-1.10.11/css/jquery.dataTables.min.css" rel="stylesheet" />
@@ -123,7 +126,98 @@
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
+<<<<<<< HEAD
 
+=======
+				<section data-background="img/blind_justice.jpg">
+					<h1><strong>Blind</strong> Selekyson</h1>
+					<h3>Who would you elect as president<br/> if personalities weren't the issue?</h3>
+					<p>
+						<small>Created for the #BilangPilipino Hackathon</small>
+					</p>
+				</section>
+
+				<section>
+					<h3>Elections are often skewed<br/> by <strong>cults of personality</strong></h3>
+					<p>
+						This is a poll application that aims help you make better decisions by masking out potential biases.
+					</p>
+					<p>
+						<br/>
+
+
+					</p>
+				</section>
+
+				<!-- Example of nested vertical slides -->
+				<section id="simula" data-transition="zoom">
+					<section>
+						<h2>Before you start, who are <em>you</em> most likely to vote for?</h2>
+
+						<table id="voting-for">
+							<tr>
+								<td>
+									<a id="binay" href="#/3"><img src="img/01.jpg" /></a>
+								</td>
+								<td>
+									<a id="santiago" href="#/3"><img src="img/02.jpg" /></a>
+								</td>
+								<td>
+									<a id="duterte" href="#/3"><img src="img/03.jpg" /></a>
+								</td>
+								<td>
+									<a id="poe" href="#/3"><img src="img/04.jpg" /></a>
+								</td>
+								<td>
+									<a id="roxas" href="#/3"><img src="img/05.jpg" /></a>
+								</td>
+							</tr>
+						</table>
+						<br>
+						<p>
+							<small>This won't factor in computing your results in any way.</small>
+						</p>
+
+					</section>
+
+				</section>
+
+				<section>
+
+					<p>
+						<small>				“If most of us are ashamed of shabby clothes and shoddy furniture,<br/> let us be more ashamed of shabby ideas and shoddy philosophies.”
+							<br/><br/>
+							<em> - Albert Einstein </em>
+						</small>
+					</p>
+					<button class="showResultButton" onclick="showResults()">Show Results</button>
+				</section>
+
+				<section data-state="resultEvent">
+					<h2>Your Results</h2>
+					<p>
+						How did you stack up?
+					</p>
+					<canvas id="memecanvas" style="border:1px solid black" width="640" height="360">
+	            		Sorry, canvas not supported
+	            	</canvas>
+	            	<br>
+				</section>
+
+				<section style="text-align: left;">
+					<h1>THE END</h1>
+					<p>
+
+					</p>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="reveal/lib/js/head.min.js"></script>
+		<script src="reveal/js/reveal.js"></script>
+>>>>>>> d8e9744055c8c56de886a6857cc7128185c99a2a
 
 				<section data-state="customevent" data-transition="zoom">
 					<div id="result">
@@ -315,6 +409,10 @@
 				return window.localStorage[key];
 			}
 
+			function showResults() {
+				Reveal.next();
+			}
+
 		</script>
 
 
@@ -420,10 +518,14 @@
 			    	topCandidate: 'img/santiago.png',
 			    	chosenCandidate: 'img/' + chosenCandidate + '.png'
 			    };
+			    var topCandidate = {
+			     	name: "Miriam Santiago",
+			        compatibility: "91%"
+			    };
 
 			    var chosenCandidate = {
-			    	name: candidateMap[chosenCandidate],
-			    	compatibility: "51%"
+			     	name: candidateMap[chosenCandidate],
+			        compatibility: "51%"
 			    };
 
 			    loadImages(sources, function(images) {
@@ -473,15 +575,20 @@
 
 					var topTextOffset = 16 *2;
 					ctx.font = 'normal bold 16pt Merriweather';
-					var topCandidateName = 'Miriam Santiago';
+					var topCandidateName = topCandidate.name;
 					ctx.fillText(topCandidateName, topTextPosX, topTextPosY + topTextOffset);
 
 					// topTextOffset += 18
 					var metrics = ctx.measureText(topCandidateName);
 					ctx.font = 'normal bold 16pt Merriweather'
 					// console.log("metrics", metrics);
+<<<<<<< HEAD
 					var topCandidatePercentage = '98%';
 					ctx.fillText(topCandidatePercentage, topTextPosX + metrics.width + 15, topTextPosY + topTextOffset);
+=======
+					var topCandidatePercentage = topCandidate.compatibility;
+		            ctx.fillText(topCandidatePercentage, topTextPosX + metrics.width + 15, topTextPosY + topTextOffset);
+>>>>>>> d8e9744055c8c56de886a6857cc7128185c99a2a
 
 		            /**
 			        * Insert Chosen Candidate stats
