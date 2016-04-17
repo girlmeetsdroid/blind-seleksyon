@@ -3,7 +3,7 @@ var handleDataTableRowReorder = function() {
 
     if ($('#data-table').length !== 0) {
         $('#data-table').DataTable({
-         rowReorder: {
+           rowReorder: {
             selector: ':last-child',
             snapX: 10
 
@@ -11,7 +11,9 @@ var handleDataTableRowReorder = function() {
         paging: false,
         searching:false,
         ordering:false,
-        info: false
+        info: false,
+        scrollY: "500px",
+        scrollCollapse: true,
     });
     }
 };
