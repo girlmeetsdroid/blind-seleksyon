@@ -271,7 +271,12 @@
 			        chosenCandidate: 'img/' + chosenCandidate + '.png'
 			     };
 
-			     var chosenCandidate = {
+			    var topCandidate = {
+			     	name: "Miriam Santiago",
+			        compatibility: "91%"
+			    };
+
+			    var chosenCandidate = {
 			     	name: candidateMap[chosenCandidate],
 			        compatibility: "51%"
 			    };
@@ -323,14 +328,14 @@
 
 					var topTextOffset = 16 *2;
 					ctx.font = 'normal bold 16pt Merriweather';
-					var topCandidateName = 'Miriam Santiago';
+					var topCandidateName = topCandidate.name;
 					ctx.fillText(topCandidateName, topTextPosX, topTextPosY + topTextOffset);
 
 					// topTextOffset += 18
 					var metrics = ctx.measureText(topCandidateName);
 					ctx.font = 'normal bold 16pt Merriweather'
 					// console.log("metrics", metrics);
-					var topCandidatePercentage = '98%';
+					var topCandidatePercentage = topCandidate.compatibility;
 		            ctx.fillText(topCandidatePercentage, topTextPosX + metrics.width + 15, topTextPosY + topTextOffset);
 
 		            /**
