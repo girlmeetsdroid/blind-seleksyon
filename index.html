@@ -402,9 +402,20 @@
 			    	topCandidate: 'img/santiago.png',
 			    	chosenCandidate: 'img/' + chosenCandidate + '.png'
 			    };
+
+					var candidateMapMarv = {
+			    	1: "Jejomar Binay",
+			    	2: "Miriam Santiago",
+			    	3: "Rodrigo Duterte",
+			    	4: "Grace Poe",
+			    	5: "Mar Roxas"
+			    };
+					// 210 highest'
+
+					
 			    var topCandidate = {
 			     	name: "Miriam Santiago",
-			        compatibility: "91%"
+			        compatibility: parseInt((candidateScores[1]/210)*100) + "%"
 			    };
 
 			    var chosenCandidate = {
