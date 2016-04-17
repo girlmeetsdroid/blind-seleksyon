@@ -129,12 +129,7 @@
 						<small>Created for the #BilangPilipino Hackathon</small>
 					</p>
 				</section>
-
-
-
-
-
-
+				
 				<section>
 					<h3>Elections are often skewed<br/> by <strong>cults of personality</strong></h3>
 					<p>
@@ -179,16 +174,6 @@
 					</section>
 
 				</section>
-				<section>
-					<h2>Your Results</h2>
-					<p>
-						How did you stack up?
-					</p>
-					<canvas id="memecanvas" style="border:1px solid black" width="640" height="360">
-						Sorry, canvas not supported
-					</canvas>
-					<br>
-				</section>
 
 				<section>
 					
@@ -198,6 +183,29 @@
 							<em> - Albert Einstein </em>
 						</small>
 					</p>
+				</section>
+
+				<section data-state="customevent" data-transition="zoom">
+					<h2>State Events (FOR MARV)</h2>
+					<p>
+						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
+					</p>
+					<pre><code class="javascript" data-trim contenteditable style="font-size: 18px;">
+						Reveal.addEventListener( 'customevent', function() {
+						console.log( '"customevent" has fired' );
+					} );
+					</code></pre>
+				</section>
+
+				<section data-state="resultEvent">
+					<h2>Your Results</h2>
+					<p>
+						How did you stack up?
+					</p>
+					<canvas id="memecanvas" style="border:1px solid black" width="640" height="360">
+	            		Sorry, canvas not supported
+	            	</canvas>
+	            	<br>
 				</section>
 
 				<section style="text-align: left;">
@@ -242,7 +250,7 @@
 			}
 
 			function getUserVotingFor (key) {
-				alert(window.localStorage[key]);
+				return window.localStorage[key];
 			}
 
 		</script>
@@ -330,115 +338,139 @@
 		        }
 		    }
 
-		    var sources = {
-		    	bg: 'img/result_bg.jpg',
-		    	topCandidate: 'img/santiago.png',
-		    	chosenCandidate: 'img/duterte.png'
-		    };
+		    function loadResultPhoto() {
+			    var chosenCandidate = getUserVotingFor('votingFor');
+			    // var chosenCandidate = window.localStorage['votingFor'];
+			    var candidateMap = {
+			    	"binay": "Jejomar Binay",
+			    	"santiago": "Miriam Santiago",
+			    	"duterte": "Rodrigo Duterte",
+			    	"poe": "Grace Poe", 
+			    	"roxas": "Mar Roxas"
+			    };
 
-		    loadImages(sources, function(images) {
-		    	var img = images.bg;
-		    	x = canvas.width/2 - img.width/2;
-		    	y = canvas.height/2 - img.height/2;
-		        ctx.drawImage(images.bg, 0, 0, images.bg.width, images.bg.height,    // source rectangle
-		        	0, 0, canvas.width, canvas.height);
+			    // alert("map: " + candidateMap[chosenCandidate]);
 
-		        /**
-		        * Insert Top Blind Candidate stats
-		        */
-		        img = images.topCandidate;
-		        imgSize = 200;
-		        x = 50;
-		        y = (canvas.height - imgSize) / 2;
-		        ctx.lineWidth  = 15;
-		        ctx.strokeStyle = 'white';
-		        ctx.arc(imgSize -50, imgSize + 10, 100, 0, 2 * Math.PI, false);
-		        ctx.stroke();
-		        ctx.closePath();
-		        ctx.drawImage(images.topCandidate, x, y + 30, imgSize, imgSize);
+			    var sources = {
+			    	bg: 'img/result_bg.jpg',
+			        topCandidate: 'img/santiago.png',
+			        chosenCandidate: 'img/' + chosenCandidate + '.png'
+			     };
 
-		        // text attributes
-		        ctx.lineWidth  = 5;
-		        ctx.strokeStyle = '#4f3928';
-		        ctx.fillStyle = '#FAF8A1';
-		        ctx.shadowColor= '#4f3928';
-		        ctx.shadowOffsetX="2";
-		        ctx.shadowOffsetY="2";
-		        ctx.font = '10pt Lato'
+			     var chosenCandidate = {
+			     	name: candidateMap[chosenCandidate],
+			        compatibility: "51%"
+			    };
 
-				// on top of image
-				topTextPosX = x;
-				topTextPosY = imgSize/2 - (16 * 2.5);
+			    loadImages(sources, function(images) {
+			     	var img = images.bg;
+			     	x = canvas.width/2 - img.width/2;
+			     	y = canvas.height/2 - img.height/2;
+			    	ctx.beginPath();
+			        ctx.drawImage(images.bg, 0, 0, images.bg.width, images.bg.height,    // source rectangle
+	                			0, 0, canvas.width, canvas.height);
+			        ctx.closePath();
 
-				// beside image
-				// topTextPosX = x + imgSize + 10;
-				// topTextPosY = y + imgSize/2;
+			        /**
+			        * Insert Top Blind Candidate stats
+			  		*/
+			        img = images.topCandidate;
+			        imgSize = 200;
+			     	x = 50;
+			     	y = (canvas.height - imgSize) / 2;
+			     	ctx.lineWidth  = 15;
+		            ctx.strokeStyle = 'white';
+		            ctx.beginPath();
+		            ctx.arc(imgSize -50, imgSize + 10, 100, 0, 2 * Math.PI, false);
+					ctx.stroke();
+					ctx.closePath();
+			        ctx.drawImage(images.topCandidate, x, y + 30, imgSize, imgSize);
 
-				// Insert Text Stats
-				var topTextTitle = 'Your Top Blind Match is';
-				ctx.fillText(topTextTitle, topTextPosX, topTextPosY);
+			        // text attributes
+			        ctx.lineWidth  = 5;
+		            ctx.strokeStyle = '#4f3928';
+		            ctx.fillStyle = '#FAF8A1';
+		            ctx.shadowColor= '#4f3928';
+		            ctx.shadowOffsetX="2";
+		            ctx.shadowOffsetY="2";
+					ctx.font = '10pt Lato'
 
-				var topTextOffset = 16 *2;
-				ctx.font = 'normal bold 16pt Merriweather';
-				var topCandidateName = 'Miriam Santiago';
-				ctx.fillText(topCandidateName, topTextPosX, topTextPosY + topTextOffset);
+					// on top of image
+					topTextPosX = x;
+					topTextPosY = imgSize/2 - (16 * 2.5);
 
-				// topTextOffset += 18
-				var metrics = ctx.measureText(topCandidateName);
-				ctx.font = 'normal bold 16pt Merriweather'
-				// console.log("metrics", metrics);
-				var topCandidatePercentage = '98%';
-				ctx.fillText(topCandidatePercentage, topTextPosX + metrics.width + 15, topTextPosY + topTextOffset);
+					// beside image
+					// topTextPosX = x + imgSize + 10;
+					// topTextPosY = y + imgSize/2;
 
-	            /**
-		        * Insert Chosen Candidate stats
-		        */
-		        ctx.shadowOffsetX="0";
-		        ctx.shadowOffsetY="0";
-		        img = images.chosenCandidate;
-		        imgSize = 200;
-		        x = canvas.width - imgSize - 50;
-		        y = (canvas.height - imgSize) / 2;
+					// Insert Text Stats
+					var topTextTitle = 'Your Top Blind Match is';
+					ctx.fillText(topTextTitle, topTextPosX, topTextPosY);
 
-		        ctx.lineWidth  = 15;
-		        ctx.strokeStyle = 'white';
-		        ctx.beginPath();
-		        ctx.arc(x + 100, imgSize + 10, 100, 0, 2 * Math.PI, false);
-		        ctx.stroke();
+					var topTextOffset = 16 *2;
+					ctx.font = 'normal bold 16pt Merriweather';
+					var topCandidateName = 'Miriam Santiago';
+					ctx.fillText(topCandidateName, topTextPosX, topTextPosY + topTextOffset);
 
-		        ctx.drawImage(images.chosenCandidate, x, y + 30, imgSize, imgSize);
+					// topTextOffset += 18
+					var metrics = ctx.measureText(topCandidateName);
+					ctx.font = 'normal bold 16pt Merriweather'
+					// console.log("metrics", metrics);
+					var topCandidatePercentage = '98%';
+		            ctx.fillText(topCandidatePercentage, topTextPosX + metrics.width + 15, topTextPosY + topTextOffset);
 
-		        ctx.lineWidth  = 5;
-		        ctx.strokeStyle = '#F4D1B1';
-		        ctx.fillStyle = '#A13679';
-		        ctx.shadowColor="#F4D1B1";
-		        ctx.shadowOffsetX="2";
-		        ctx.shadowOffsetY="2";
-		        ctx.font = '10pt Lato'
+		            /**
+			        * Insert Chosen Candidate stats
+			  		*/
+			  		ctx.shadowOffsetX="0";
+		            ctx.shadowOffsetY="0";
+			  		img = images.chosenCandidate;
+			        imgSize = 200;
+			     	x = canvas.width - imgSize - 50;
+			     	y = (canvas.height - imgSize) / 2;
 
-				// on top of image
-				topTextPosX = x;
-				topTextPosY = imgSize/2 - (16 * 2.5);
+			        ctx.lineWidth  = 15;
+		            ctx.strokeStyle = 'white';
+		            ctx.beginPath();
+		            ctx.arc(x + 100, imgSize + 10, 100, 0, 2 * Math.PI, false);
+					ctx.stroke();
+					ctx.closePath();
+					ctx.drawImage(images.chosenCandidate, x, y + 30, imgSize, imgSize);
 
-				// beside image
-				// topTextPosX = x + imgSize + 10;
-				// topTextPosY = y + imgSize/2;
+			        ctx.lineWidth  = 5;
+		            ctx.strokeStyle = '#F4D1B1';
+		            ctx.fillStyle = '#A13679';
+		            ctx.shadowColor="#F4D1B1";
+		            ctx.shadowOffsetX="2";
+		            ctx.shadowOffsetY="2";
+					ctx.font = '10pt Lato'
 
-				topTextTitle = 'Compatibility with Chosen Candidate';
-				ctx.fillText(topTextTitle, topTextPosX, topTextPosY);
+					// on top of image
+					topTextPosX = x;
+					topTextPosY = imgSize/2 - (16 * 2.5);
 
-				topTextOffset = 16 *2;
-				ctx.font = 'normal bold 16pt Merriweather';
-				topCandidateName = 'Rodrigo Duterte';
-				ctx.fillText(topCandidateName, topTextPosX, topTextPosY + topTextOffset);
+					// beside image
+					// topTextPosX = x + imgSize + 10;
+					// topTextPosY = y + imgSize/2;
 
-				// topTextOffset += 18
-				var metrics = ctx.measureText(topCandidateName);
-				ctx.font = 'normal bold 16pt Merriweather';
-				// console.log("metrics", metrics);
-				ctx.fillText('50%', topTextPosX + metrics.width + 15, topTextPosY + topTextOffset);
-			});
+					topTextTitle = 'Compatibility with Chosen Candidate';
+					ctx.fillText(topTextTitle, topTextPosX, topTextPosY);
 
+					topTextOffset = 16 *2;
+					ctx.font = 'normal bold 16pt Merriweather';
+					topCandidateName = chosenCandidate.name;
+					ctx.fillText(topCandidateName, topTextPosX, topTextPosY + topTextOffset);
+
+					// topTextOffset += 18
+					var metrics = ctx.measureText(topCandidateName);
+					ctx.font = 'normal bold 16pt Merriweather';
+		            ctx.fillText(chosenCandidate.compatibility, topTextPosX + metrics.width + 15, topTextPosY + topTextOffset);
+			      });
+			}
+
+			Reveal.addEventListener( 'resultEvent', function() {
+				loadResultPhoto();
+			} );
 
 		</script>
 
