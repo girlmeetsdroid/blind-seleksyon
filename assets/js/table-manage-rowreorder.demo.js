@@ -16,7 +16,7 @@ var handleDataTableRowReorder = function() {
           paging: false,
           searching:false,
           info: false,
-          scrollY: "600px",
+          scrollY: "500px",
           scrollCollapse: true,
           "columnDefs": [
           {
