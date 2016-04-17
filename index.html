@@ -129,7 +129,7 @@
 						<small>Created for the #BilangPilipino Hackathon</small>
 					</p>
 				</section>
-				
+
 				<section>
 					<h3>Elections are often skewed<br/> by <strong>cults of personality</strong></h3>
 					<p>
@@ -176,7 +176,7 @@
 				</section>
 
 				<section>
-					
+
 					<p>
 						<small>				“If most of us are ashamed of shabby clothes and shoddy furniture,<br/> let us be more ashamed of shabby ideas and shoddy philosophies.”
 							<br/><br/>
@@ -279,10 +279,13 @@
 				sectionAnswer += sectionAnswerItem + "</section>";
 				$("section#kwestyon"+ value.id).after(sectionAnswer);
 
-				var inHTML = "<thead><tr>Order<th></th></tr></thead>";
+				var inHTML = "<thead><tr><th>Order</th><th></th><th></th></tr></thead>";
 				$.each(value.answers, function(index, val){
 					if (val.summary) {
-						var newItem = "<tr id='"+value.id + "-" +val.candidate_id +"'><td class='answer'><p><span class='"+val.summary.toLowerCase() +"'>"+val.summary +"</span>"+ val.quote + "</p></td></tr>"
+						var newItem = "<tr class='"+ val.candidate_id +"' id='"+value.id + "-" +val.candidate_id +"'>"+
+							"<td>" + index +"</td>" + "<td>" + val.candidate_id +"</td>" +
+							"<td class='answer'><p><span class='"+val.summary.toLowerCase() +"'>"+val.summary +"</span>"+ val.quote + "</p></td>"
+						 +"</tr>"
 						inHTML += newItem;
 					}
 				});
@@ -345,7 +348,7 @@
 			    	"binay": "Jejomar Binay",
 			    	"santiago": "Miriam Santiago",
 			    	"duterte": "Rodrigo Duterte",
-			    	"poe": "Grace Poe", 
+			    	"poe": "Grace Poe",
 			    	"roxas": "Mar Roxas"
 			    };
 
