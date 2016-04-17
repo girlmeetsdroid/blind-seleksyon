@@ -519,7 +519,7 @@
 					// topTextPosX = x + imgSize + 10;
 					// topTextPosY = y + imgSize/2;
 
-					topTextTitle = 'Compatibility with Chosen Candidate';
+					topTextTitle = 'Your Chosen Candidate is';
 					ctx.fillText(topTextTitle, topTextPosX, topTextPosY);
 
 					topTextOffset = 16 *2;
@@ -529,8 +529,8 @@
 
 					// topTextOffset += 18
 					var metrics = ctx.measureText(topCandidateName);
-					ctx.font = 'normal bold 16pt Merriweather';
-					ctx.fillText(chosenCandidate.compatibility, topTextPosX + metrics.width + 15, topTextPosY + topTextOffset);
+					// ctx.font = 'normal bold 16pt Merriweather';
+					// ctx.fillText(chosenCandidate.compatibility, topTextPosX + metrics.width + 15, topTextPosY + topTextOffset);
 				});
 			}
 
