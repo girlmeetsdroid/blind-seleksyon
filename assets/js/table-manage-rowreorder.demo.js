@@ -22,7 +22,7 @@ var handleDataTableRowReorder = function() {
           "columnDefs": [
           {
             "targets": [0,1],
-            "visible": false
+            "visible": true
         }
         ]
     });
