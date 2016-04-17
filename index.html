@@ -272,7 +272,8 @@
 
 				$("section#simula").after(sectionHtml);
 
-				var sectionAnswer = "<section id='sagot"+ value.id +"' data-transition='zoom' data-state=resultEvent">";
+				var sectionAnswer = "<section id='sagot"+ value.id +"' data-transition='zoom'>";
+
 				var sectionAnswerItem = "<h5>"+ value.shortname +"</h5><small><em> &#8593; Best Answer </em></small>"
 				+ "<table id='data-table"+ value.id +"' class='table table-striped table-bordered data-table' width='100%'></table><small><em> &#8595; Worst Answer </em></small>";
 				sectionAnswer += sectionAnswerItem + "</section>";
