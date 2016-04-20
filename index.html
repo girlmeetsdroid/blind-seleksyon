@@ -397,30 +397,39 @@
 
 			    // alert("map: " + candidateMap[chosenCandidate]);
 
-			    var sources = {
-			    	bg: 'img/result_bg.jpg',
-			    	topCandidate: 'img/santiago.png',
-			    	chosenCandidate: 'img/' + chosenCandidate + '.png'
-			    };
-
-					var candidateMapMarv = {
+				var candidateMapMarv = {
 			    	1: "Jejomar Binay",
 			    	2: "Miriam Santiago",
 			    	3: "Rodrigo Duterte",
 			    	4: "Grace Poe",
 			    	5: "Mar Roxas"
 			    };
-					// 210 highest'
-					// console.log(parseInt((candidateScores[1]/600)*100) + "%");
-					// console.log(parseInt((candidateScores[2]/600)*100) + "%");
-					// console.log(parseInt((candidateScores[3]/600)*100) + "%");
-					// console.log(parseInt((candidateScores[4]/600)*100) + "%");
-					// console.log(parseInt((candidateScores[5]/600)*100) + "%");
+				var candidateSourceMap = {
+					1: "binay",
+					2: "santiago",
+					3: "Duterte",
+					4: "poe",
+					5: "roxas"
+				};
+
+				var highest = candidateScores[1];
+				var topIndex = 1;
+				for (var highestIndex = 1; highestIndex <= 5; highestIndex++) {
+					if (highest < candidateScores[highestIndex]) {
+						highest = candidateScores[highestIndex];
+						topIndex = highestIndex;
+					}
+				}
 
 			    var topCandidate = {
-			     	name: "Miriam Santiago",
-			        compatibility: parseInt((candidateScores[1]/600)*100) + "%"
+			     	name: candidateMapMarv[topIndex],
+			        compatibility: parseInt((candidateScores[topIndex]/600)*100) + "%"
 			    };
+				var sources = {
+					bg: 'img/result_bg.jpg',
+					topCandidate: 'img/' + candidateSourceMap[topIndex] + '.png',
+					chosenCandidate: 'img/' + chosenCandidate + '.png'
+				};
 
 			    var chosenCandidate = {
 			     	name: candidateMap[chosenCandidate],
